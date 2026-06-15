@@ -29,7 +29,6 @@
             padding: 60px 20px;
         }
 
-        /* خلفية متحركة */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -52,6 +51,20 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4facfe;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -68,6 +81,46 @@
             color: var(--text-sub);
             font-size: 1.3rem;
             font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #050505;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: #00f2fe;
+            background: rgba(0, 242, 254, 0.05);
+            transform: translateY(-2px);
         }
 
         .grid {
@@ -94,7 +147,6 @@
             box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
         }
 
-        /* تفاعل الصور الديكورية عبر الخلفية النيون */
         .project-card::before {
             content: '';
             position: absolute;
@@ -105,12 +157,7 @@
             background: var(--accent-gradient);
             filter: blur(80px);
             opacity: 0.1;
-            transition: opacity 0.3s ease;
             pointer-events: none;
-        }
-
-        .project-card:hover::before {
-            opacity: 0.25;
         }
 
         .tech-badge {
@@ -124,14 +171,12 @@
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 15px;
-            letter-spacing: 0.5px;
         }
 
         h3 {
             font-size: 1.6rem;
             margin-bottom: 12px;
             color: #ffffff;
-            font-weight: 700;
         }
 
         p {
@@ -147,8 +192,6 @@
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
         }
 
         .project-link svg {
@@ -165,7 +208,6 @@
             transform: translateX(4px);
         }
 
-        /* الحركات */
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -180,7 +222,6 @@
         @media (max-width: 600px) {
             body { padding: 40px 15px; }
             h1 { font-size: 2.2rem; }
-            .subtitle { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -190,8 +231,14 @@
 
     <div class="container">
         <header>
+            <img src="profile.jpg" alt="Mohammad Khatib" class="profile-img">
             <h1>Mohammad Khatib</h1>
             <div class="subtitle">AI & n8n Workflow Engineer</div>
+            
+            <div class="action-buttons">
+                <a href="cv.pdf" target="_blank" class="btn btn-primary">View CV</a>
+                <a href="https://www.linkedin.com/in/mohammad-khatib78/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+            </div>
         </header>
 
         <main class="grid">
@@ -228,7 +275,6 @@
     </div>
 
     <script>
-        // تأثير جافا سكربت التفاعلي: جسيمات متحركة في الخلفية تتفاعل مع حركة الشاشة
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -283,7 +329,6 @@
         }
         animate();
 
-        // تأثير ظهور البطاقات التدريجي عند التمرير
         const cards = document.querySelectorAll('.project-card');
         cards.forEach((card, index) => {
             setTimeout(() => {
